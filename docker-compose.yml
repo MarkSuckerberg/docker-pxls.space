@@ -1,13 +1,11 @@
 ---
 version: "3.9"
 services:
-  pxls-frontend:
+  pxls-backend:
     build:
       dockerfile: Dockerfile
-      context: .
+      context: ./backend
     restart: always
-    ports:
-      - "4567:4567"
     environment:
       DATABASE_USER: "pxls"
       DATABASE_PASSWORD: "ChAnGeMeAtYoUrEaRlIeStCoNvEnIeNcE"
@@ -15,7 +13,17 @@ services:
       DATABASE_HOST: "pxls-database"
       PXLS_HOST: "localhost"
     volumes:
-      - pxls-datastore:/data
+      - pxls-backend:/data
+
+  pxls-frontend:
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+    restart: always
+    ports:
+      - "3009:3000"
+    volumes:
+      - pxls-frontend:/data
 
   pxls-database:
     image: postgres
@@ -29,4 +37,5 @@ services:
 
 volumes:
   pxls-database: {}
-  pxls-datastore: {}
+  pxls-backend: {}
+  pxls-frontend: {}

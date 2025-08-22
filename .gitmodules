@@ -1,0 +1,6 @@
+[submodule "backend/Pxls"]
+	path = backend/Pxls
+	url = https://github.com/MarkSuckerberg/Pxls.git
+[submodule "frontend/pxls-web"]
+	path = frontend/pxls-web
+	url = https://github.com/MarkSuckerberg/pxls-web.git

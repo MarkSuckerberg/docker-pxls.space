@@ -38,7 +38,7 @@ services:
     pxls-database:
         image: postgres
         restart: unless-stopped
-        command: postgres -c 'max_connections=225'
+        command: postgres -c 'max_connections=250'
         environment:
             POSTGRES_USER: "pxls"
             POSTGRES_PASSWORD: "ChAnGeMeAtYoUrEaRlIeStCoNvEnIeNcE"

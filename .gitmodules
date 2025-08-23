@@ -7,3 +7,6 @@
 [submodule "frontend/PxlsAdmin"]
 	path = frontend/PxlsAdmin
 	url = https://github.com/MarkSuckerberg/PxlsAdmin.git
+[submodule "frontend/PxlsStats"]
+	path = frontend/PxlsStats
+	url = https://github.com/MarkSuckerberg/PxlsStats.git

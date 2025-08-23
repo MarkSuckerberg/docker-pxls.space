@@ -66,6 +66,18 @@ services:
         volumes:
             - ./data:/data
 
+    pxls-stats:
+        build:
+            dockerfile: Dockerfile
+            context: ./frontend/PxlsStats
+        restart: unless-stopped
+        ports:
+            - "8081:80"
+        depends_on:
+            pxls-database:
+                condition: service_healthy
+                restart: true
+
 volumes:
     pxls-database: {}
     pxls-backend: {}

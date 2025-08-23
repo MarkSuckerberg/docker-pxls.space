@@ -2,15 +2,18 @@
 FROM node:alpine3.22 AS build
 
 RUN apk add git
-RUN git clone https://github.com/pxlsspace/pxls-web.git
+
 WORKDIR /pxls-web
-RUN npm install
+
+COPY ./pxls-web/package*.json ./
+
+RUN --mount=type=cache,target=/app/npm/cache \
+    npm install --cache /app/npm/cache --loglevel error --frozen-lockfile
+
+COPY ./pxls-web /pxls-web
+
 RUN npm run build
 
-FROM node:alpine3.22
-LABEL maintainer="Aneurin Price adp@nyeprice.space"
-RUN mkdir /frontend
-COPY --from=build /pxls-web /frontend
-COPY config.json5 /frontend/config.json5
-WORKDIR /frontend
+COPY config.json5 /pxls-web/config.json5
 ENTRYPOINT [ "npm", "start" ]
+EXPOSE 3000

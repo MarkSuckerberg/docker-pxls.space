@@ -6,5 +6,5 @@
   proxyTo: 'pxls-backend:4567',
 
   // Displayed on each page
-  title: 'pxls.space',
+  title: "Steller's Pixels",
 }

@@ -44,7 +44,7 @@ services:
             POSTGRES_PASSWORD: "ChAnGeMeAtYoUrEaRlIeStCoNvEnIeNcE"
             POSTGRES_DB: "pxls"
         volumes:
-            - pxls-database:/var/lib/postgresql
+            - pxls-database:/var/lib/postgresql/data
         healthcheck:
             test: ["CMD-SHELL", "pg_isready", "-d", "pxls"]
             interval: 30s
